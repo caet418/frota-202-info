@@ -9,21 +9,28 @@ public class Frota {
         this.carros = new ArrayList<>();
     }
 
-    // criação dos metodos: adicionar carro(add do proprio array list), remover carro, pesquisar carro --> dentro dos slides de encapsulamento
+    // criação dos metodos: adicionar carro(add do proprio array list), pesquisar carro --> dentro dos slides de encapsulamento, remover carro
     // caetano
 
     public void adicionarCarro(Carro carro){
         carros.add(carro);
     } //correto
 
-    //arrumar o pesquisarCarro
-    public void pesquisarPlaca(String procurarPlaca){
-
+    public Carro pesquisarPlaca(String procurarPlaca){
+        for (Carro carroAtual : carros) {
+            if (carroAtual.getPlaca().equals(procurarPlaca)) {
+                return carroAtual;
+            }
+        }
+        return null;
     }
 
-    //arrumar o removerCarro
-    public void removerCarro(Carro carro){
-        carros.remove(carro);
+    public boolean removerCarro(String placaPesquisada){
+        if (pesquisarPlaca(placaPesquisada)!=null){
+            carros.remove(placaPesquisada);
+            return true;
+        }
+        return false;
     }
 
 }
